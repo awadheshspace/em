@@ -1,15 +1,13 @@
 #!/bin/bash
 
-# Update package lists and install Python 3 and pip3
-apt-get update
-apt-get install -y python3 python3-pip
-
-# Ensure pip3 is up-to-date
+# Upgrade pip to the latest version (if necessary)
 python3 -m pip install --upgrade pip
 
-# Install the dependencies from requirements.txt
+# Install dependencies from requirements.txt
 pip3 install -r requirements.txt
 
-# Collect static files and run migrations (if necessary)
+# Collect static files (if you're using Django's static files)
 python3 manage.py collectstatic --noinput
+
+# Run database migrations (if necessary)
 python3 manage.py migrate
